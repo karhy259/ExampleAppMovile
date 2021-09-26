@@ -19,6 +19,8 @@ const Login = () => {
     const [hasError,setHassError] = useState(false);
 
 
+    const data = JSON.parse(localStorage.getItem('registro'));
+
     function handleChange(name, value){
         if (name === 'email') {
             setEmail(value);
@@ -37,8 +39,9 @@ const Login = () => {
 
     function ifMatch(param){ 
 
+
         if (param.email.length > 0 && param.password.length > 0){
-            if(param.email === 'Karhy259@ejemplo.com' && param.password === '0904Alicia' ){
+            if(param.email === data.email  && param.password === data.password ){
                 const  { email,  password} = param;
                 let ac = {email, password};
                 let account = JSON.stringify(ac);
@@ -47,13 +50,20 @@ const Login = () => {
                 window.location.href="/home"
 
             } else {
-                setIsLogin(false);
-                setHassError(true);
-            }
-        } else {
-            setIsLogin(false);
-            setHassError(true);
-        }
+                if(param.email === 'Karhy259@ejemplo.com'  && param.password === '0904Alicia' ){
+                    const  { email,  password} = param;
+                    let ac = {email, password};
+                    let account = JSON.stringify(ac);
+                    localStorage.setItem('account', account);
+                    setIsLogin(true);
+                    window.location.href="/home"
+    
+                } else {
+                        setIsLogin(false);
+                        setHassError(true);
+                    }    
+                }     
+        } 
 
     }
 

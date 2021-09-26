@@ -12,6 +12,7 @@ import Label from "../../commons/Label/Label"
 
 function Salir(){
     localStorage.removeItem('account')
+    localStorage.removeItem('registro')
     window.location.href="/"
 
 }

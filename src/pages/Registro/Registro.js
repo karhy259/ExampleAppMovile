@@ -15,7 +15,7 @@ const Registro = () => {
     const [email,setEmail] = useState('');
     const [nombre,setName] = useState('');
     const [password,setPassword] = useState('');
-    const [password2,setPassword2] = useState('');
+    const [pass2,setPass2] = useState('');
     const [passwordError, setPasswordError] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
     const [hasError,setHassError] = useState(false);
@@ -35,8 +35,8 @@ const Registro = () => {
                     setHassError(false);
                 }else {
                         setPasswordError(false);
-                        setPassword(value)
-                        setPassword2(value)
+                        setPassword(value);
+                        setPass2(value);
                         setHassError(false);
                     } 
             }          
@@ -48,20 +48,28 @@ const Registro = () => {
 
 
     function ingreso(param){
-        if (param.name.length > 0 && param.email.length > 0 && param.password.length > 0 && param.password2.length > 0){
-            if(param.password === param.password2){
-                const  { name, email,  password} = param;
-                let re = {name, email, password};
-                let register = JSON.stringify(re);
-                localStorage.setItem('registro', register);
-                window.location.href="/login"
-            }
+        
+            if (param.password.length > 0 && param.pass2.length > 0 && param.email.length > 0 && param.nombre.length > 0)
+         {
+                if (param.password.value === param.pass2.value){
+
+                    const  { nombre, email,  password} = param;
+                    let re = {nombre, email, password};
+                    let register = JSON.stringify(re);
+                    localStorage.setItem('registro', register);
+                    window.location.href="/"
+                    } else {
+                        setPasswordError(true);
+                    }
+        } else {
+            setHassError(true);
         }
+        
     }
 
     function handleSubmit(){
 
-        let register = { nombre, email, password, password2}
+        let register = { nombre, email, password, pass2}
         if (register) {
             ingreso(register);
         }
@@ -71,68 +79,77 @@ const Registro = () => {
     return (
         <div>
             <div className='registro-container'>
-            <div className='registro-content'>
-                <Img/>
-                <Title text="Registro"/>
+                <div className='registro-content'>           
+                    <Img/>
 
-                <Label text="Nombre"/>
-                <Input 
-                attribute={{
-                    id: 'nombre',
-                    name: 'nombre',
-                    type:'text', 
-                    placeholder: 'Ingrese su nombre',  
-                }}
-                handleChange = {handleChange}
-                />
-                <Label text="Correo"/>
-                <Input 
-                attribute={{
-                    id: 'email',
-                    name: 'email',
-                    type:'email', 
-                    placeholder: 'Ingrese su Correo',  
-                }}
-                handleChange = {handleChange}
-                />
+                    {hasError &&
+                        <label className='label-alert'>
+                                Los campos no deben estar vacios
+                        </label>
+                    }
+                    <Title text="Registro"/>
 
-                <Label text="Contraseña"/>
-                <Input 
-                attribute={{
-                    id: 'contraseña',
-                    name: 'contraseña',
-                    type:'password', 
-                    placeholder: 'Ingrese su Contraseña'
-                }}
-                handleChange = {handleChange}
-                param={passwordError}
-                />
+                    <Label text="Nombre"/>
+                    <Input 
+                    attribute={{
+                        id: 'nombre',
+                        name: 'nombre',
+                        type:'text', 
+                        placeholder: 'Ingrese su nombre',  
+                    }}
+                    handleChange = {handleChange}
+                    />
+                    <Label text="Correo"/>
+                    <Input 
+                    attribute={{
+                        id: 'email',
+                        name: 'email',
+                        type:'email', 
+                        placeholder: 'Ingrese su Correo',  
+                    }}
+                    handleChange = {handleChange}
+                    />
 
-                <Label text="Respita la contraseña"/>
-                <Input 
-                attribute={{
-                    id: 'contraseña2',
-                    name: 'contraseña2',
-                    type:'password', 
-                    placeholder: 'Ingrese su Contraseña'
-                }}
-                handleChange = {handleChange}
-                param={passwordError}
-                />
+                    <Label text="Contraseña"/>
+                    <Input 
+                    attribute={{
+                        id: 'contraseña',
+                        name: 'contraseña',
+                        type:'password', 
+                        placeholder: 'Ingrese su Contraseña'
+                    }}
+                    handleChange = {handleChange}
+                    param={passwordError}
+                    />
 
-                {passwordError &&
-                    <label className='label-error'>
-                        La contraseña no coincide
-                    </label>
-                }
+                    <Label text="Respita la contraseña"/>
+                    <Input 
+                    attribute={{
+                        id: 'contraseña2',
+                        name: 'contraseña2',
+                        type:'password', 
+                        placeholder: 'Ingrese su Contraseña'
+                    }}
+                    handleChange = {handleChange}
+                    param={passwordError}
+                    required
+                    />
 
-                <div className="submit-button-container">  
-                    <button onClick={handleSubmit} className='submit-button'>
-                        Resgistrarme
-                    </button>
+                    {passwordError &&
+                        <label className='label-error'>
+                            Las contraseña no coinciden
+                        </label>
+                    }
+
+                    <div className="submit-button-container">  
+                        <button onClick={handleSubmit} className='submit-button'>
+                            Resgistrarme
+                        </button>
+                    </div>
                 </div>
+                    
             </div>
-        </div>
+                
         </div>
     );
 

@@ -10,7 +10,7 @@ import  './Img.css';
 const Img = () => { 
     return (
         <div>
-            <img className="pulpo" src={pulpo} roundedCircle />
+            <img className="pulpo" src={pulpo}/>
         </div>
 
     ); 
