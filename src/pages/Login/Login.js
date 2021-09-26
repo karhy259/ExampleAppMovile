@@ -63,7 +63,10 @@ const Login = () => {
                         setHassError(true);
                     }    
                 }     
-        } 
+            } else {
+                setIsLogin(false);
+                setHassError(true);
+        }    
 
     }
 
