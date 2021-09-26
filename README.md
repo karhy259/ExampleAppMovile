@@ -1,4 +1,5 @@
 # Getting Started with Create React App
+en el navegador selecciona el visor a movil y agregar lo siguiente valores correspondientes al iphone 12 para la vista de la aplicacion:  390 x 844 px
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
