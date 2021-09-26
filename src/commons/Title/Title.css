@@ -1,0 +1,11 @@
+.title-container label{
+    color: purple;
+    font-size: 20px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-weight: bold;
+    border: 5px;
+    padding: 20px ;
+
+}

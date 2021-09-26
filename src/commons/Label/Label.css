@@ -1,0 +1,11 @@
+.label-container {
+    color: rgb(253, 253, 253);
+    font-size: 15px;
+    display:flex;
+    justify-content: left;
+    align-items:left;
+    font-weight: bold;
+    border: 5px;
+    padding: 10px ;
+
+}
