@@ -9,6 +9,8 @@ import  './Home.css';
 import Title from "../../commons/Title/Title"
 import Label from "../../commons/Label/Label"
 
+import Task from "./Task/Task"
+
 
 function Salir(){
     localStorage.removeItem('account')
@@ -18,18 +20,14 @@ function Salir(){
 }
 const Home = () => { return (
     <div className="home-container">
-
-
-        <Title Text="Pulpomania">
-
-        </Title>
-        <Label text="Bienvenido a mi pequeña api, "/>
-
+        
         <div className="submit-button-container">  
-                <button onClick={Salir}className='submit-button'>
-                        Log out
-                    </button>
-                </div>
+            <button onClick={Salir}className='submit-button'>
+                Log out
+            </button>
+        </div>
+
+        <Task></Task>
     </div> 
 
 

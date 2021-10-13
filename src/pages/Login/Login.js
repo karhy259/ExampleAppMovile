@@ -135,7 +135,7 @@ const Login = () => {
 
                 <div className="submit-button-container">  
                 <button onClick={Registrarme} className='submit-button'>
-                        Register
+                        ¿ No tienes cuenta? 
                     </button>
                 </div>
             </div>

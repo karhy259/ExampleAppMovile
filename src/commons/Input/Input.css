@@ -32,7 +32,6 @@
     font-size: 14px;
     outline: none;
 }
-
 .input-error::placeholder{
     font-size: 14px;
     color: red;
